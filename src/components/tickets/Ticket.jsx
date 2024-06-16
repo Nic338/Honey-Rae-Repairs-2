@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getAllEmployees } from "../../services/employeeService";
 
-export const Ticket = ({ ticketObject }) => {
+export const Ticket = ({ ticket }) => {
     const [employees, setEmployees] = useState([]);
     const [assignedEmployee, setAssignedEmployee] = useState({});
 
@@ -13,16 +13,16 @@ export const Ticket = ({ ticketObject }) => {
     }, [])
 
     useEffect(() => {
-        const foundEmployee = employees.find((employee) => employee.id === ticketObject.employeeTickets[0]?.employeeId)
+        const foundEmployee = employees.find((employee) => employee.id === ticket.employeeTickets[0]?.employeeId)
         setAssignedEmployee(foundEmployee)
-    }, [employees, ticketObject])
+    },[employees, ticket])
 
 
     return (
         <>
             <section className="ticket">
-                <header className="ticket-info">#{ticketObject.id}</header>
-                <div>{ticketObject.description}</div>
+                <header className="ticket-info">#{ticket.id}</header>
+                <div>{ticket.description}</div>
                 <footer>
                     <div>
                         <div className="ticket-info">Assignee:</div>
@@ -32,7 +32,7 @@ export const Ticket = ({ ticketObject }) => {
                     </div>
                     <div>
                         <div className="ticket-info">emergency</div>
-                        <div>{ticketObject.emergency ? "yes" : "no"} </div>
+                        <div>{ticket.emergency ? "yes" : "no"} </div>
                     </div>
                 </footer>
             </section>
