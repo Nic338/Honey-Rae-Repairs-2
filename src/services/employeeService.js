@@ -7,3 +7,7 @@ export const getEmployeeById = (employeeId) => {
     return fetch(`http://localhost:8088/employees/${employeeId}?_expand=user`)
     .then((res) => res.json())
 }
+export const getEmployeeDetails = (userId) => {
+    return fetch(`http://localhost:8088/employees?userId=${userId}&_expand=user&_embed=employeeTickets`)
+    .then((res) => res.json())
+}
